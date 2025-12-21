@@ -1,96 +1,101 @@
+
 # BRACU Club Management System
 
-A comprehensive web application developed for managing club activities and data at BRAC University. This project is built using Next.js and utilizes a raw MySQL database connection.
+> A comprehensive web application for managing club activities, members, and events at BRAC University.
+
+This project is built using **Next.js** and utilizes **raw SQL** commands (via `mysql2`) for high-performance database interactions.
+
+---
 
 ## 👨‍💻 Development Team
 
-* **Hasib Hossain Abir** (Team Lead) - ID: `24101236`
-* **Rakat E Jannat Raka** - ID: `24101299`
-* **Ononna Tasnim** - ID: `23201520`
+| Name | Student ID |
+| --- | --- |
+| **Hasib Hossain Abir** (Team Lead) | `24101236` |
+| **Rakat E Jannat Raka** | `24101299` |
+| **Ononna Tasnim** | `23201520` |
+
+---
+
+## 🛠️ Tech Stack
+
+* **Framework:** Next.js
+* **Database:** MySQL (Raw SQL)
+* **Driver:** `mysql2`
+* **Language:** TypeScript/JavaScript
 
 ---
 
 ## 🚀 Getting Started
 
-Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
+Follow these steps to set up the project locally.
 
-### Prerequisites
+### 1. Prerequisites
 
-Ensure you have the following installed on your system:
+Ensure you have the following installed:
 
-* [Node.js](https://nodejs.org/)
-* [MySQL](https://www.mysql.com/)
+* [Node.js](https://nodejs.org/) (Latest LTS recommended)
+* [MySQL Server](https://www.mysql.com/)
 
-### Installation
+### 2. Installation
 
-1. **Clone the repository**
-Open your terminal and run the following command to download the project:
+Clone the repository and install the required dependencies.
+
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+# Clone the repository
+git clone https://github.com/bracu-club-management-sys.git
 
-```
+# Navigate to project directory
+cd bracu-club-management-sys
 
-
-2. **Install Dependencies**
-Install the necessary project packages:
-```bash
+# Install standard dependencies
 npm install
 
-```
-
-
-3. **Install MySQL Driver**
-Ensure the MySQL driver is explicitly installed:
-```bash
+# Install MySQL driver explicitly
 npm install mysql2
 
 ```
 
+---
 
+## 🗄️ Database Setup
+
+This project requires a specific database structure. You will find two SQL files in the **root folder** of this project.
+
+### Step 1: Execute SQL Files
+
+You must run the provided SQL files in your database **in this specific order**:
+
+1. **`structure_file.sql`**
+* *Action:* Creates the database, tables, and necessary relationships.
+
+
+2. **`values_file.sql`**
+* *Action:* Inserts dummy data and initial values for testing.
+
+
+
+> **Tip:** You can import these using **MySQL Workbench** or via the command line:
+> ```bash
+> mysql -u root -p < structure_file.sql
+> mysql -u root -p < values_file.sql
+> 
+> ```
+> 
+> 
+
+### Step 2: Configure Connection (`lib/db.ts`)
+
+The application needs your local database credentials to connect.
+
+1. Open the file: `lib/db.ts`
+2. Update the `host`, `user`, and `password` fields to match your local setup.
 
 ---
 
-## ⚙️ Configuration
+## 🏃‍♂️ Running the Application
 
-### 1. Configure Database Connection
-
-You need to manually configure the database credentials in the code.
-
-1. Navigate to the file: `lib/db.ts`
-2. Open the file and update the **hostname** and **password** to match your local MySQL setup.
-
-```typescript
-// Example inside lib/db.ts
-const db = mysql.createConnection({
-  host: 'localhost', // Change this if needed
-  user: 'root',      // Your database username
-  password: 'your_password_here', // UPDATE THIS
-  database: 'your_database_name'
-});
-
-```
-
-### 2. Database Setup (SQL Files)
-
-In the **root folder** of the project, you will find two SQL files. You must execute them in your MySQL database in the following order:
-
-1. **Structure File:** Run this file first to create the necessary tables and relationships.
-2. **Values File:** Run this file second to populate the tables with initial dummy data.
-
-You can import these using a GUI tool like **MySQL Workbench** or via the command line:
-
-```bash
-mysql -u root -p < structure_file.sql
-mysql -u root -p < values_file.sql
-
-```
-
----
-
-## 🏃‍♂️ Running the App
-
-Once the installation and configuration are complete, run the development server:
+Once the database is linked and dependencies are installed:
 
 ```bash
 npm run dev
@@ -98,4 +103,6 @@ npm run dev
 ```
 
 Open [http://localhost:3000](https://www.google.com/search?q=http://localhost:3000) with your browser to see the result.
+
+
 
