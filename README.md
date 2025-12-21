@@ -1,4 +1,3 @@
-
 ---
 
 # BRACU Club Management System
@@ -7,9 +6,9 @@ A comprehensive web application developed for managing club activities and data 
 
 ## 👨‍💻 Development Team
 
-* **Hasib Hossain Abir** (Team Lead)
-* **Rakat E Janat Raka**
-* **Ononna Tasnim Omy**
+* **Hasib Hossain Abir** (Team Lead) - ID: `24101236`
+* **Rakat E Jannat Raka** - ID: `24101299`
+* **Ononna Tasnim** - ID: `23201520`
 
 ---
 
