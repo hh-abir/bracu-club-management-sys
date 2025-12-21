@@ -264,3 +264,47 @@ export async function removeMemberAction(memberId: number) {
     await removeClubMember(memberId);
     revalidatePath('/club/members');
 }
+export async function addExpenseAction(prevState: any, formData: FormData) {
+    const cookieStore = await cookies();
+    const session = JSON.parse(cookieStore.get('session')?.value || '{}');
+
+    const amount = parseFloat(formData.get('amount') as string);
+    const description = formData.get('description') as string;
+    const year = new Date().getFullYear();
+
+    if (!session.clubId) return { message: 'Unauthorized' };
+
+    try {
+        await addExpense(session.clubId, amount, description, year);
+        revalidatePath('/club/finance');
+        return { success: true, message: 'Expense recorded.' };
+    } catch (error) {
+        return { message: 'Database error.' };
+    }
+}
+
+export async function postAnnouncementAction(prevState: any, formData: FormData) {
+    const cookieStore = await cookies();
+    const session = JSON.parse(cookieStore.get('session')?.value || '{}');
+
+    if (session.role !== 'OCA') {
+        return { success: false, message: 'Unauthorized' };
+    }
+
+    const description = formData.get('description') as string;
+
+    if (!description || description.trim().length === 0) {
+        return { success: false, message: 'Announcement cannot be empty.' };
+    }
+
+    try {
+        const query = 'INSERT INTO Announcement (user_id, description) VALUES (?, ?)';
+        await pool.query(query, [session.userId, description]);
+
+        revalidatePath('/oca');
+        return { success: true, message: 'Announcement posted successfully!' };
+    } catch (error) {
+        console.error('Announcement Error:', error);
+        return { success: false, message: 'Failed to post announcement.' };
+    }
+}
