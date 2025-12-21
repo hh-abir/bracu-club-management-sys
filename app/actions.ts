@@ -164,4 +164,103 @@ export async function reviewBudgetAction(budgetId: number, status: 'approved' | 
    
     revalidatePath('/oca');
 }
+export async function submitReportAction(prevState: any, formData: FormData) {
+    const bookingId = parseInt(formData.get('booking_id') as string);
+    const summary = formData.get('summary') as string;
+    const file = formData.get('file') as File;
 
+    if (!file || file.size === 0) {
+        return { message: 'Please upload a valid file.' };
+    }
+
+    const existing = await getReportByEventId(bookingId);
+    if (existing) {
+        return { message: 'Report already submitted.' };
+    }
+
+    try {
+        const fileName = `${Date.now()}-${file.name.replace(/\s/g, '_')}`;
+        const uploadDir = path.join(process.cwd(), 'public/uploads');
+
+        await mkdir(uploadDir, { recursive: true });
+
+        const bytes = await file.arrayBuffer();
+        const buffer = Buffer.from(bytes);
+
+        await writeFile(path.join(uploadDir, fileName), buffer);
+
+        const dbPath = `/uploads/${fileName}`;
+        await createEventReport(bookingId, summary, dbPath);
+
+        revalidatePath('/club');
+        return { success: true, message: 'Report submitted successfully!' };
+
+    } catch (error) {
+        console.error('Upload Error:', error);
+        return { message: 'Failed to upload report. Check server logs.' };
+    }
+}
+
+
+type ActionState = {
+    success: boolean;
+    message: string;
+};
+
+export async function addSponsorAction(prevState: ActionState, formData: FormData): Promise<ActionState> {
+    const cookieStore = await cookies();
+    const session = JSON.parse(cookieStore.get('session')?.value || '{}');
+
+    if (!session.clubId) {
+        return { success: false, message: 'Unauthorized: No club session found.' };
+    }
+
+    const bookingId = formData.get('booking_id') as string;
+    const name = formData.get('name') as string;
+    const contact = formData.get('contact') as string;
+    const deal = formData.get('deal') as string;
+
+    if (!name || !deal) {
+        return { success: false, message: 'Please fill in the Company Name and Deal details.' };
+    }
+
+    try {
+        const query = 'INSERT INTO Sponsor (booking_id, name, contact, deal) VALUES (?, ?, ?, ?)';
+
+        const validBookingId = bookingId && bookingId !== 'undefined' ? parseInt(bookingId) : null;
+
+        await pool.query(query, [validBookingId, name, contact, deal]);
+
+        revalidatePath('/club');
+        revalidatePath(`/club/events/${bookingId}`);
+
+        return { success: true, message: 'Sponsor added successfully!' };
+
+    } catch (error) {
+        console.error('Database Error:', error);
+        return { success: false, message: 'Failed to save sponsor. Please try again.' };
+    }
+}
+
+export async function addMemberAction(prevState: any, formData: FormData) {
+    const cookieStore = await cookies();
+    const session = JSON.parse(cookieStore.get('session')?.value || '{}');
+
+    const email = formData.get('email') as string;
+    const position = formData.get('position') as string;
+
+    if (!session.clubId) return { message: 'Unauthorized' };
+
+    try {
+        await addClubMember(session.clubId, email, position);
+        revalidatePath('/club/members');
+        return { success: true, message: 'Member added successfully!' };
+    } catch (error: any) {
+        return { message: error.message || 'Failed to add member.' };
+    }
+}
+
+export async function removeMemberAction(memberId: number) {
+    await removeClubMember(memberId);
+    revalidatePath('/club/members');
+}
