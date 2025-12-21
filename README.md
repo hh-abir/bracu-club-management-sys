@@ -1,5 +1,3 @@
----
-
 # BRACU Club Management System
 
 A comprehensive web application developed for managing club activities and data at BRAC University. This project is built using Next.js and utilizes a raw MySQL database connection.
@@ -101,4 +99,3 @@ npm run dev
 
 Open [http://localhost:3000](https://www.google.com/search?q=http://localhost:3000) with your browser to see the result.
 
----
