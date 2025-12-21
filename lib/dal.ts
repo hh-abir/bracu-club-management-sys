@@ -226,3 +226,40 @@ export async function getPublicEvents() {
     const [rows] = await pool.query<RowDataPacket[]>(query);
     return rows;
 }
+export async function getClubs() {
+    const query = 'SELECT * FROM Clubs ORDER BY club_id ASC LIMIT 5';
+    const [rows] = await pool.query<RowDataPacket[]>(query);
+    return rows;
+}
+
+
+export async function getSponsors(clubId: number) {
+    const query = `
+        SELECT s.id, s.name, s.deal, s.contact, e.event_name 
+        FROM Sponsor s
+        JOIN Events e ON s.booking_id = e.booking_id
+        JOIN Clubs c ON e.club_name = c.club_name
+        WHERE c.club_id = ?
+        ORDER BY s.id DESC
+    `;
+    const [rows] = await pool.query<RowDataPacket[]>(query, [clubId]);
+    return rows;
+}
+
+export async function getClubEventBudgets(clubId: number) {
+    const query = `
+        SELECT 
+            e.event_name, 
+            e.date, 
+            b.total_budget AS budget_requested, 
+            b.total_budget AS budget_allocated, 
+            b.status AS budget_status 
+        FROM Events e
+        JOIN Budget b ON e.booking_id = b.booking_id
+        JOIN Clubs c ON e.club_name = c.club_name
+        WHERE c.club_id = ?
+        ORDER BY e.date DESC
+    `;
+    const [rows] = await pool.query<RowDataPacket[]>(query, [clubId]);
+    return rows;
+}
