@@ -8,7 +8,8 @@ import {
     ChevronRight,
     Users,
     TrendingUp,
-    Handshake
+    Handshake,
+    Tent
 } from 'lucide-react';
 
 interface UserProps {
@@ -45,7 +46,11 @@ export default function Sidebar({ user }: { user: UserProps }) {
                     </p>
                     <div className="space-y-1">
                         {isOCA ? (
+                            <>
                             <SidebarItem href="/oca" icon={<LayoutDashboard size={20} />} label="Dashboard" />
+                            <SidebarItem href="/oca/clubs" icon={<Tent size={20} />} label="Clubs" />
+
+                            </>
                         ) : (
                             <>
                                 <SidebarItem href="/club" icon={<LayoutDashboard size={20} />} label="My Club" />

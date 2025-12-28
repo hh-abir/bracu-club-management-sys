@@ -308,3 +308,28 @@ export async function postAnnouncementAction(prevState: any, formData: FormData)
         return { success: false, message: 'Failed to post announcement.' };
     }
 }
+
+
+
+export async function registerClubAction(prevState: any, formData: FormData) {
+    const cookieStore = await cookies();
+    const session = JSON.parse(cookieStore.get('session')?.value || '{}');
+
+    if (session.role !== 'OCA') {
+        return { success: false, message: 'Unauthorized' };
+    }
+
+    const clubName = formData.get('club_name') as string;
+    const clubEmail = formData.get('club_email') as string;
+
+    try {
+        await pool.query('INSERT INTO Clubs (club_name, club_email) VALUES (?, ?)', [clubName, clubEmail]);
+        revalidatePath('/oca/clubs');
+        return { success: true, message: 'Club registered successfully!' };
+    } catch (error: any) {
+        if (error.code === 'ER_DUP_ENTRY') {
+            return { success: false, message: 'A club with this name already exists.' };
+        }
+        return { success: false, message: 'Database error. Please try again.' };
+    }
+}

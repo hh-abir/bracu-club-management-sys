@@ -7,8 +7,7 @@ if (process.env.NODE_ENV === 'production') {
     pool = mysql.createPool({
         host: 'localhost',
         user: 'root',
-        // Add Password
-        password: '',
+        password: '9632',
         database: 'university_club_db',
         waitForConnections: true,
         connectionLimit: 10,
@@ -19,8 +18,7 @@ if (process.env.NODE_ENV === 'production') {
         (global as any).mysqlPool = mysql.createPool({
             host: 'localhost',
             user: 'root',
-            // Add Password
-            password: '',
+            password: '9632',
             database: 'university_club_db',
             waitForConnections: true,
             connectionLimit: 10,

@@ -263,3 +263,25 @@ export async function getClubEventBudgets(clubId: number) {
     const [rows] = await pool.query<RowDataPacket[]>(query, [clubId]);
     return rows;
 }
+
+
+
+export async function getAllClubsStats() {
+    const query = `
+        SELECT 
+            c.club_id,
+            c.club_name,
+            c.club_email,
+            u.name AS president_name,
+            u.email AS president_email,
+            (SELECT COUNT(*) FROM ClubMembers cm WHERE cm.club_id = c.club_id AND cm.status = 'active') AS member_count,
+            (SELECT COUNT(*) FROM Events e WHERE e.club_name = c.club_name) AS event_count,
+            (SELECT COALESCE(SUM(amount), 0) FROM ClubExpense ce WHERE ce.club_id = c.club_id) AS total_expenses
+        FROM Clubs c
+        LEFT JOIN Panel p ON c.club_id = p.club_id AND p.position = 'President'
+        LEFT JOIN Users u ON p.student_id = u.user_id
+        ORDER BY c.club_name ASC
+    `;
+    const [rows] = await pool.query<RowDataPacket[]>(query);
+    return rows;
+}
