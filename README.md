@@ -1,4 +1,3 @@
-
 # BRACU Club Management System
 
 > A comprehensive web application for managing club activities, members, and events at BRAC University.
@@ -23,6 +22,111 @@ This project is built using **Next.js** and utilizes **raw SQL** commands (via `
 * **Database:** MySQL (Raw SQL)
 * **Driver:** `mysql2`
 * **Language:** TypeScript/JavaScript
+
+---
+
+## 📸 Application Gallery
+
+<details>
+<summary><b>Click to expand screenshots</b></summary>
+
+
+
+
+<table>
+<tr>
+<td align="center">
+<img src="docs/Capture1.jpg" alt="Dashboard View" width="100%"/>
+
+
+
+
+<em>Dashboard</em>
+</td>
+<td align="center">
+<img src="docs/Capture2.jpg" alt="Member List" width="100%"/>
+
+
+
+
+<em>Member Directory</em>
+</td>
+</tr>
+<tr>
+<td align="center">
+<img src="docs/Capture3.jpg" alt="Event Creation" width="100%"/>
+
+
+
+
+<em>Event Management</em>
+</td>
+<td align="center">
+<img src="docs/Capture4.jpg" alt="Profile Settings" width="100%"/>
+
+
+
+
+<em>Profile View</em>
+</td>
+</tr>
+<tr>
+<td align="center">
+<img src="docs/Capture5.jpg" alt="Capture 5" width="100%"/>
+
+
+
+
+<em>Activity Logs</em>
+</td>
+<td align="center">
+<img src="docs/Capture6.jpg" alt="Capture 6" width="100%"/>
+
+
+
+
+<em>Finance Tracking</em>
+</td>
+</tr>
+<tr>
+<td align="center">
+<img src="docs/Capture7.jpg" alt="Capture 7" width="100%"/>
+
+
+
+
+<em>Announcements</em>
+</td>
+<td align="center">
+<img src="docs/Capture8.jpg" alt="Capture 8" width="100%"/>
+
+
+
+
+<em>Role Assignments</em>
+</td>
+</tr>
+<tr>
+<td align="center">
+<img src="docs/Capture9.jpg" alt="Capture 9" width="100%"/>
+
+
+
+
+<em>Recruitment Portal</em>
+</td>
+<td align="center">
+<img src="docs/Capture10.jpg" alt="Capture 10" width="100%"/>
+
+
+
+
+<em>System Settings</em>
+</td>
+</tr>
+</table>
+
+</details>
 
 ---
 
@@ -104,5 +208,6 @@ npm run dev
 
 Open [http://localhost:3000](https://www.google.com/search?q=http://localhost:3000) with your browser to see the result.
 
+---
 
-
+Would you like me to help draft a section detailing the specific Next.js folder structure or the database schema to help onboard junior developers contributing to the repo?
