@@ -38,7 +38,7 @@ This project is built using **Next.js** and utilizes **raw SQL** commands (via `
 
 
 
-<em>Dashboard View</em>
+<em>Home Page</em>
 </td>
 <td align="center">
 <img src="docs/Capture2.jpg" alt="Member List" width="100%"/>
@@ -46,7 +46,7 @@ This project is built using **Next.js** and utilizes **raw SQL** commands (via `
 
 
 
-<em>Member Directory</em>
+<em>Authentication</em>
 </td>
 </tr>
 <tr>
@@ -56,7 +56,7 @@ This project is built using **Next.js** and utilizes **raw SQL** commands (via `
 
 
 
-<em>Event Management</em>
+<em>OCA Dashboard View</em>
 </td>
 <td align="center">
 <img src="docs/Capture4.jpg" alt="Profile Settings" width="100%"/>
@@ -64,7 +64,7 @@ This project is built using **Next.js** and utilizes **raw SQL** commands (via `
 
 
 
-<em>Profile Settings</em>
+<em>Financial Tracking</em>
 </td>
 </tr>
 <tr>
@@ -74,7 +74,7 @@ This project is built using **Next.js** and utilizes **raw SQL** commands (via `
 
 
 
-<em>Activity Logs</em>
+<em>Events Calender</em>
 </td>
 <td align="center">
 <img src="docs/Capture6.jpg" alt="Capture 6" width="100%"/>
@@ -82,7 +82,7 @@ This project is built using **Next.js** and utilizes **raw SQL** commands (via `
 
 
 
-<em>Finance Tracking</em>
+<em>Club Member Registration</em>
 </td>
 </tr>
 <tr>
@@ -92,7 +92,7 @@ This project is built using **Next.js** and utilizes **raw SQL** commands (via `
 
 
 
-<em>Announcements</em>
+<em>Budget Submissions</em>
 </td>
 <td align="center">
 <img src="docs/Capture8.jpg" alt="Capture 8" width="100%"/>
@@ -100,7 +100,7 @@ This project is built using **Next.js** and utilizes **raw SQL** commands (via `
 
 
 
-<em>Role Assignments</em>
+<em>Post Announcements</em>
 </td>
 </tr>
 <tr>
@@ -110,7 +110,7 @@ This project is built using **Next.js** and utilizes **raw SQL** commands (via `
 
 
 
-<em>Recruitment Portal</em>
+<em>Announcements</em>
 </td>
 <td align="center">
 <img src="docs/Capture10.jpg" alt="Capture 10" width="100%"/>
@@ -118,7 +118,7 @@ This project is built using **Next.js** and utilizes **raw SQL** commands (via `
 
 
 
-<em>System Settings</em>
+<em>Sponsorships</em>
 </td>
 </tr>
 </table>
