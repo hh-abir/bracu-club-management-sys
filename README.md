@@ -1,3 +1,6 @@
+
+---
+
 # BRACU Club Management System
 
 > A comprehensive web application for managing club activities, members, and events at BRAC University.
@@ -27,12 +30,6 @@ This project is built using **Next.js** and utilizes **raw SQL** commands (via `
 
 ## 📸 Application Gallery
 
-<details>
-<summary><b>Click to expand screenshots</b></summary>
-
-
-
-
 <table>
 <tr>
 <td align="center">
@@ -41,7 +38,7 @@ This project is built using **Next.js** and utilizes **raw SQL** commands (via `
 
 
 
-<em>Dashboard</em>
+<em>Dashboard View</em>
 </td>
 <td align="center">
 <img src="docs/Capture2.jpg" alt="Member List" width="100%"/>
@@ -67,7 +64,7 @@ This project is built using **Next.js** and utilizes **raw SQL** commands (via `
 
 
 
-<em>Profile View</em>
+<em>Profile Settings</em>
 </td>
 </tr>
 <tr>
@@ -125,8 +122,6 @@ This project is built using **Next.js** and utilizes **raw SQL** commands (via `
 </td>
 </tr>
 </table>
-
-</details>
 
 ---
 
@@ -209,5 +204,3 @@ npm run dev
 Open [http://localhost:3000](https://www.google.com/search?q=http://localhost:3000) with your browser to see the result.
 
 ---
-
-Would you like me to help draft a section detailing the specific Next.js folder structure or the database schema to help onboard junior developers contributing to the repo?
